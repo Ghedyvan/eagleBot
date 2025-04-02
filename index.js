@@ -32,13 +32,16 @@ const client = new Client({
     dataPath: path.join(process.cwd(), "wwebjs_auth")
   }),
   puppeteer: {
-    executablePath: "/snap/bin/chromium", // Caminho correto do Chromium no seu sistema
+    executablePath: "/snap/bin/chromium",
     headless: true,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
-      "--single-process"
+      "--disable-accelerated-2d-canvas",
+      "--disable-gpu",
+      "--single-process",
+      "--remote-debugging-port=9222"
     ]
   }
 });
