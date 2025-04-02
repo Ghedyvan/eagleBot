@@ -27,7 +27,20 @@ const ibo = MessageMedia.fromFilePath("./public/ibo.png");
 //   },
 // });
 
-const client = new Client();
+const client = new Client({
+  authStrategy: new LocalAuth({
+    dataPath: path.join(process.cwd(), "wwebjs_auth")
+  }),
+  puppeteer: {
+    executablePath: "/snap/bin/chromium", // Caminho correto do Chromium no seu sistema
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--single-process"
+    ]
+  }
+});
 
 const userSessions = new Map(); // Armazena sessões ativas
 
