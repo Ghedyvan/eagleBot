@@ -33,6 +33,7 @@ const client = new Client({
   }),
   puppeteer: {
     executablePath: "/snap/bin/chromium", // Caminho correto do Chromium no seu sistema
+    headless: true,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
