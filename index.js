@@ -1,21 +1,8 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000; // Porta que o Render vai usar
 console.log("Iniciando o bot...");
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const { MessageMedia } = require("whatsapp-web.js");
 const path = require("path");
-
-app.get('/', (req, res) => {
-  res.send('Bot está funcionando!');
-});
-
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
-
-
 const iptvstreamplayer = MessageMedia.fromFilePath("./public/streamplayer.png");
 const ibo = MessageMedia.fromFilePath("./public/ibo.png");
 
