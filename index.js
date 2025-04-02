@@ -33,15 +33,15 @@ const client = new Client({
   }),
   puppeteer: {
     executablePath: "/snap/bin/chromium",
-    headless: true,
+    headless: false,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
-      "--disable-accelerated-2d-canvas",
       "--disable-gpu",
-      "--single-process",
-      "--remote-debugging-port=9222"
+      "--remote-debugging-port=9223", // Alterado de 9222 para 9223
+      "--disable-software-rasterizer",
+      "--disable-extensions"
     ]
   }
 });
