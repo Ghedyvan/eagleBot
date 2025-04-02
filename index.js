@@ -7,25 +7,27 @@ const iptvstreamplayer = MessageMedia.fromFilePath("./public/streamplayer.png");
 const ibo = MessageMedia.fromFilePath("./public/ibo.png");
 
 // Configuração do cliente com ajustes para ambientes cloud
-const client = new Client({
-  authStrategy: new LocalAuth({
-    dataPath: path.join(process.cwd(), "wwebjs_auth"), // Define caminho explícito para a pasta de autenticação
-  }),
-  puppeteer: {
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--single-process",
-    ],
-    executablePath: process.env.CHROMIUM_PATH || undefined, // Usa Chromium do ambiente se disponível
-  },
-  webVersionCache: {
-    type: "remote",
-    remotePath:
-      "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html",
-  },
-});
+// const client = new Client({
+//   authStrategy: new LocalAuth({
+//     dataPath: path.join(process.cwd(), "wwebjs_auth"), // Define caminho explícito para a pasta de autenticação
+//   }),
+//   puppeteer: {
+//     args: [
+//       "--no-sandbox",
+//       "--disable-setuid-sandbox",
+//       "--disable-dev-shm-usage",
+//       "--single-process",
+//     ],
+//     executablePath: process.env.CHROMIUM_PATH || undefined, // Usa Chromium do ambiente se disponível
+//   },
+//   webVersionCache: {
+//     type: "remote",
+//     remotePath:
+//       "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html",
+//   },
+// });
+
+const client = new Client();
 
 const userSessions = new Map(); // Armazena sessões ativas
 
