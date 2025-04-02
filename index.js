@@ -46,20 +46,21 @@ const client = new Client({
 const userSessions = new Map(); // Armazena sessões ativas
 
 client.on("qr", (qr) => {
+  console.log("QR Code recebido! Gerando terminal...");
   qrcode.generate(qr, { small: true });
-  console.log("QR Code gerado - Escaneie para conectar");
+  console.log("QR Code gerado. Escaneie para conectar.");
 });
 
 client.on("authenticated", () => {
-  console.log("Autenticado com sucesso!");
+  console.log("✅ Autenticado com sucesso!");
 });
 
 client.on("auth_failure", (msg) => {
-  console.error("Falha na autenticação:", msg);
+  console.error("❌ Falha na autenticação:", msg);
 });
 
 client.on("ready", () => {
-  console.log("Bot está pronto!");
+  console.log("🤖 Bot está pronto para uso!");
 });
 
 client.on("disconnected", (reason) => {
