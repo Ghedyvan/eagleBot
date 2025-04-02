@@ -29,21 +29,22 @@ const ibo = MessageMedia.fromFilePath("./public/ibo.png");
 
 const client = new Client({
   authStrategy: new LocalAuth({
-    dataPath: path.join(process.cwd(), "wwebjs_auth")
+    dataPath: path.join(process.cwd(), "wwebjs_auth"), // Define caminho explícito para a pasta de autenticação
   }),
   puppeteer: {
-    executablePath: "/snap/bin/chromium",
-    headless: true,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
-      "--disable-gpu",
-      "--remote-debugging-port=9223", // Alterado de 9222 para 9223
-      "--disable-software-rasterizer",
-      "--disable-extensions"
-    ]
-  }
+      "--single-process",
+    ],
+    executablePath: process.env.CHROMIUM_PATH || undefined, // Usa Chromium do ambiente se disponível
+  },
+  webVersionCache: {
+    type: "remote",
+    remotePath:
+      "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html",
+  },
 });
 
 const userSessions = new Map(); // Armazena sessões ativas
